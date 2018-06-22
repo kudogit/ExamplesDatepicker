@@ -5,11 +5,20 @@
         Datepicker Jquery UI Examples
       </h2>
     </div>
-    <div class="col-md-12" style="margin-top:20px;text-align: center">
-      <input type="text" 
-        [(ngModel)]="datum" 
-        [options]="options"
-        (change)="checkDates($event)" class="datepicker" datepicker>
+    <div class="col-md-12" style="margin:10px auto; width: 20%;text-align: center;">
+     
+    </div>
+   
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <datepicker [currenFilter]="'daily'"></datepicker>
+    </div>
+    <div class="col-md-4">
+      <datepicker [currenFilter]="'mouthly'"></datepicker>
+    </div>
+    <div class="col-md-4">
+      <datepicker [currenFilter]="'year'"></datepicker>
     </div>
   </div>
 </div>
