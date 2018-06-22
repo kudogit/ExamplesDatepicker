@@ -18,7 +18,7 @@ declare var $: any;
 
 
 export class DatepickerComponent implements  AfterViewInit {
-  date: any;
+  date = moment(new Date().getDate()).format('DD-MM-YY');
   @Output()
   changeCurrenFilter = new EventEmitter<any>();
 
@@ -45,13 +45,10 @@ export class DatepickerComponent implements  AfterViewInit {
         changeYear: true,
         showButtonPanel: true,
         dateFormat:'MM',
-        onSelect: (dateText) => {
-          this.date = dateText;
-       },
         onClose: function (dateText, inst) {
           var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
           var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-          $(this).datepicker('setDate', moment(new Date(year, month, 1).getMonth(), 'M').format('MMMM'));
+          $(this).datepicker('setDate',new Date(year, month, 1));
         }
       });
       $(".datepicker_mouthly").focus(function () {
@@ -64,18 +61,19 @@ export class DatepickerComponent implements  AfterViewInit {
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true,
-        dateFormat: 'MM yy',
+        dateFormat: 'yy',
         onSelect: (dateText) => {
           this.date = dateText;
        },
         onClose: function(dateText, inst) { 
-            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            //var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
             var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-            $(this).datepicker('setDate', moment(new Date(year, month, 1).getMonth(), 'Y').format('YYYY'));
+            $(this).datepicker('setDate',new Date(year));
         }
     });
       $(".datepicker_year").focus(function () {
         $(".ui-datepicker-calendar").hide();
+        $(".ui-datepicker-month").hide();
       });
     }
     else {
